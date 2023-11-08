@@ -1,5 +1,7 @@
 import React from 'react';
-import ProductList from './features/productList/ProductList';
+import ProductList from './features/product-list/ProductList'; // Adjust the import path
+
+
 
 function App() {
   return (

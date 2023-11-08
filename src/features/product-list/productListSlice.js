@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './productListApi';
+import { fetchCount } from './productListAPI';
 
 const initialState = {
   value: 0,
   status: 'idle',
 };
 
-
-export  const incrementAsync = createAsyncThunk(
-  'productList/fetchCount',
+export const incrementAsync = createAsyncThunk(
+  'counter/fetchCount',
   async (amount) => {
     const response = await fetchCount(amount);
     // The value we return becomes the `fulfilled` action payload
@@ -16,19 +15,14 @@ export  const incrementAsync = createAsyncThunk(
   }
 );
 
-export const productListSlice = createSlice({
-  name: 'productList',
+export const counterSlice = createSlice({
+  name: 'counter',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     increment: (state) => {
-
       state.value += 1;
     },
-
   },
-  
-  
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, (state) => {
@@ -41,10 +35,8 @@ export const productListSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = productListSlice.actions;
+export const { increment } = counterSlice.actions;
 
+export const selectCount = (state) => state.counter.value;
 
-export const selectCount = (state) => state.productList.value;
-
-
-export default productListSlice.reducer;
+export default counterSlice.reducer;
