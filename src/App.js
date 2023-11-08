@@ -1,12 +1,12 @@
 import React from 'react';
-import ProductList from './features/product-list/ProductList'; // Adjust the import path
+import Home from './pages/Home';
 
 
 
 function App() {
   return (
     <div className="App">
-     <ProductList/>
+     <Home/>
     </div>
   );
 }
