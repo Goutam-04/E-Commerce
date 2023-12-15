@@ -7,8 +7,10 @@ import { useParams } from 'react-router-dom';
 import { addToCartAsync, selectItems } from '../../cart/cartSlice';
 import { selectLoggedInUser } from '../../auth/authSlice';
 import { discountedPrice } from '../../../app/constants';
+
 import { useAlert } from 'react-alert';
 import { Grid } from 'react-loader-spinner';
+
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 

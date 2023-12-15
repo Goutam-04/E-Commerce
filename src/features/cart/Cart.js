@@ -9,8 +9,10 @@ import {
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { discountedPrice } from '../../app/constants';
+
 import { Grid } from 'react-loader-spinner';
 import Modal from '../common/Modal';
+
 
 export default function Cart() {
   const dispatch = useDispatch();
