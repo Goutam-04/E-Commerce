@@ -12,14 +12,8 @@ import { selectLoggedInUser } from '../auth/authSlice';
 
 
 const navigation = [
-
   { name: 'Products', link: '/', user: true },
   { name: 'Products', link: '/admin', admin: true },
-
-  { name: 'Dashboard', link: '#', user: true },
-  { name: 'Team', link: '#', user: true },
-  { name: 'Admin', link: '/admin', admin: true },
-
   { name: 'Orders', link: '/admin/orders', admin: true },
 
 ];
@@ -189,6 +183,7 @@ function NavBar({ children }) {
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">
+                        {/* this should come from userInfo */}
                         {user.name}
                       </div>
                       <div className="text-sm font-medium leading-none text-gray-400">

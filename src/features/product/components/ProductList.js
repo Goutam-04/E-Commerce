@@ -27,10 +27,7 @@ import {
 } from '@heroicons/react/20/solid';
 import { ITEMS_PER_PAGE, discountedPrice } from '../../../app/constants';
 import Pagination from '../../common/Pagination';
-
 import { Grid } from 'react-loader-spinner';
-
-
 
 const sortOptions = [
   { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
@@ -400,9 +397,7 @@ function DesktopFilter({ handleFilter, filters }) {
   );
 }
 
-
 function ProductGrid({ products, status }) {
-
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
@@ -444,9 +439,7 @@ function ProductGrid({ products, status }) {
                   </div>
                   <div>
                     <p className="text-sm block font-medium text-gray-900">
-
                       ${discountedPrice(product)}
-
                     </p>
                     <p className="text-sm block line-through font-medium text-gray-400">
                       ${product.price}
