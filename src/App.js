@@ -11,11 +11,13 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import Protected from './features/auth/components/Protected';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   checkAuthAsync,
   selectLoggedInUser,
   selectUserChecked,
 } from './features/auth/authSlice';
+
 import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
 import PageNotFound from './pages/404';
 import OrderSuccessPage from './pages/OrderSuccessPage';
@@ -170,14 +172,19 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   const userChecked = useSelector(selectUserChecked);
 
+
   useEffect(() => {
     dispatch(checkAuthAsync());
   }, [dispatch]);
 
+
   useEffect(() => {
+    
     if (user) {
       dispatch(fetchItemsByUserIdAsync());
+
       // we can get req.user by token on backend so no need to give in front-end
+
       dispatch(fetchLoggedInUserAsync());
     }
   }, [dispatch, user]);
@@ -185,11 +192,13 @@ function App() {
   return (
     <>
       <div className="App">
+
         {userChecked && (
           <Provider template={AlertTemplate} {...options}>
             <RouterProvider router={router} />
           </Provider>
         )}
+
         {/* Link must be inside the Provider */}
       </div>
     </>
