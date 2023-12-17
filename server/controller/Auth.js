@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 exports.createUser = async (req, res) => {
   try {
+
     const salt = crypto.randomBytes(16);
     crypto.pbkdf2(
       req.body.password,
@@ -27,15 +28,18 @@ exports.createUser = async (req, res) => {
         });
       }
     );
+
   } catch (err) {
     res.status(400).json(err);
   }
 };
 
 exports.loginUser = async (req, res) => {
+
   res.json(req.user);
 };
 
 exports.checkUser = async (req, res) => {
   res.json({status:'success',user: req.user});
+
 };

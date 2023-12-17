@@ -24,6 +24,15 @@ import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
 import AdminHome from './pages/AdminHome';
 import AdminProductDetailPage from './pages/AdminProductDetailPage';
 import AdminProductFormPage from './pages/AdminProductFormPage';
+import AdminOrdersPage from './pages/AdminOrdersPage';
+import { positions, Provider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+
+const options = {
+  timeout: 5000,
+  position: positions.BOTTOM_LEFT,
+};
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -90,6 +99,14 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: '/admin/orders',
+    element: (
+      <ProtectedAdmin>
+        <AdminOrdersPage></AdminOrdersPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
     path: '/admin/product-form/edit/:id',
     element: (
       <ProtectedAdmin>
@@ -99,15 +116,27 @@ const router = createBrowserRouter([
   },
   {
     path: '/order-success/:id',
-    element: <OrderSuccessPage></OrderSuccessPage>,
+    element: (
+      <Protected>
+        <OrderSuccessPage></OrderSuccessPage>{' '}
+      </Protected>
+    ),
   },
   {
     path: '/orders',
-    element: <UserOrdersPage></UserOrdersPage>,
+    element: (
+      <Protected>
+        <UserOrdersPage></UserOrdersPage>{' '}
+      </Protected>
+    ),
   },
   {
     path: '/profile',
-    element: <UserProfilePage></UserProfilePage>,
+    element: (
+      <Protected>
+        <UserProfilePage></UserProfilePage>{' '}
+      </Protected>
+    ),
   },
   {
     path: '/logout',
@@ -137,7 +166,9 @@ function App() {
   return (
     <>
       <div className="App">
-        <RouterProvider router={router} />
+        <Provider template={AlertTemplate} {...options}>
+          <RouterProvider router={router} />
+        </Provider>
         {/* Link must be inside the Provider */}
       </div>
     </>
